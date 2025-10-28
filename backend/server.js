@@ -12,7 +12,7 @@ import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5000;
 
 
 connectDB();
@@ -28,14 +28,14 @@ const options = {
       version: '1.0.0',
       description: 'Endpoints de consumo con sus diferentes métodos para productos, usuarios y ordenes de compra, información de tallada de función y posibles códigos de respuesta asi como variables y tipos de datos',
     },
-  servers: [
-  {
-    url: process.env.BASE_URL || `http://localhost:${port}`,
-    description: 'Servidor API HOUSESTAGE',
+    servers: [
+      {
+        url: 'http://localhost:5000',
+        description: 'Servidor local',
+      },
+    ]
   },
-],
-  },
-  apis: ["backend/controllers/*.js", "backend/models/*.js"],
+  apis: ["backend/controllers/*.js", "backend/models/*,js"],
 };
 
 const specs = swaggerJsdoc(options);
