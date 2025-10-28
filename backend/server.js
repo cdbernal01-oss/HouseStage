@@ -73,4 +73,10 @@ if (process.env.NODE_ENV === 'production') {
 app.use(notFound);
 app.use(errorHandler);
 
+// Captura errores al iniciar el servidor
+app.on('error', err => {
+  console.error('Error al iniciar el servidor:', err);
+});
+
+// Inicia el servidor en el puerto configurado
 app.listen(port, () => console.log(`Servidor en ejecución en el puerto ${port}`));
