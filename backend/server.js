@@ -28,14 +28,14 @@ const options = {
       version: '1.0.0',
       description: 'Endpoints de consumo con sus diferentes métodos para productos, usuarios y ordenes de compra, información de tallada de función y posibles códigos de respuesta asi como variables y tipos de datos',
     },
-    servers: [
-      {
-        url: 'http://localhost:5000',
-        description: 'Servidor local',
-      },
-    ]
+  servers: [
+  {
+    url: process.env.BASE_URL || `http://localhost:${port}`,
+    description: 'Servidor API HOUSESTAGE',
   },
-  apis: ["backend/controllers/*.js", "backend/models/*,js"],
+],
+  },
+  apis: ["backend/controllers/*.js", "backend/models/*.js"],
 };
 
 const specs = swaggerJsdoc(options);
