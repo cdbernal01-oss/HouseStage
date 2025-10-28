@@ -59,7 +59,7 @@ const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
   app.use(express.static(path.join(__dirname, '/frontend/build')));
   app.get('*', (req, res) =>
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
@@ -73,10 +73,4 @@ if (process.env.NODE_ENV === 'production') {
 app.use(notFound);
 app.use(errorHandler);
 
-// Captura errores al iniciar el servidor
-app.on('error', err => {
-  console.error('Error al iniciar el servidor:', err);
-});
-
-// Inicia el servidor en el puerto configurado
 app.listen(port, () => console.log(`Servidor en ejecución en el puerto ${port}`));
